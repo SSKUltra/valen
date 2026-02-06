@@ -3,9 +3,10 @@ const DAY_CONTENT = {
     1: {
         title: '🌹 Rose Day',
         theme: 'day-theme-rose',
-        message: `<p>Today is Rose Day - a day to express your love and gratitude!</p>
-                  <p>Just like a golden retriever's unconditional love, I'm grateful for everything you are.</p>`,
-        cta: 'See more memories'
+        message: `<p><em>"Finally, a bouquet you don't have to leave behind."</em></p>
+                  <p style="font-size: 0.95rem; color: #999;">Guaranteed never to wilt, even through airport security.</p>`,
+        cta: 'Pick a rose',
+        type: 'interactive-bouquet'
     },
     2: {
         title: '💍 Propose Day',
@@ -59,6 +60,45 @@ const DAY_CONTENT = {
     }
 };
 
+const ROSE_MEANINGS = {
+    red: {
+        name: 'The Soul Soother',
+        color: '#ff4757',
+        emoji: '❤️',
+        text: 'To the woman who is my peace. You are a calm soul who makes the world quiet down whenever we talk. Thank you for blending into my life so naturally, as if you were always the missing piece. I\'m the luckiest man to have your understanding heart by my side.'
+    },
+    yellow: {
+        name: 'The Smol Penguin & Her Giant',
+        color: '#ffd700',
+        emoji: '🐧',
+        text: 'For my favorite \'Smol Penguin\' from your \'Giant.\' I promise to always be the person you can put flowers on and call a \'Pinky Gudiya\' (Pink Doll). Your laugh after taking those photos is my favorite sound in the world.'
+    },
+    pink: {
+        name: 'The Emotional Anchor',
+        color: '#ff69b4',
+        emoji: '💪',
+        text: 'Thank you for being my strength. You are a powerful woman who sees all my flaws and breakdowns and chooses to be my support anyway. This rose is for the way you care for me when I\'m at my weakest.'
+    },
+    white: {
+        name: 'The Golden Hour Promise',
+        color: '#ffffff',
+        emoji: '🌅',
+        text: 'For our future. I can\'t wait for the day I\'m not sending digital flowers, but waiting for you to come home from work with hot chai and snacks. We\'ll watch the sunset, and whenever you want to go out, you can just sit on top of me and let\'s go—your forever hangout buddy.'
+    },
+    lavender: {
+        name: 'The Cringe King\'s Tribute',
+        color: '#b19cd9',
+        emoji: '💜',
+        text: 'Since this is your favorite color, it is now officially my favorite color too. (Did that make you cringe? Good.) I\'ll gladly be the cringiest guy on earth just to see that specific reaction of yours. I love it.'
+    },
+    orange: {
+        name: 'The \'Annoyance\' Blossom',
+        color: '#ff7f00',
+        emoji: '🤪',
+        text: 'This one is for all the times I irritate you just to see your reaction. I know I overstep sometimes, but thank you for being so understanding and forgetting my nonsense so quickly. You\'re the best for putting up with me.'
+    }
+};
+
 class DayContent {
     static getContent(dayId) {
         return DAY_CONTENT[dayId] || null;
@@ -67,6 +107,11 @@ class DayContent {
     static renderContent(dayId) {
         const content = this.getContent(dayId);
         if (!content) return '<p>No content found for this day.</p>';
+
+        // Special handling for interactive bouquet on Day 1
+        if (dayId === 1) {
+            return this.renderBouquet();
+        }
 
         return `
             <div class="day-content ${content.theme}">
@@ -77,6 +122,44 @@ class DayContent {
                 <div id="mediaGallery${dayId}" class="media-gallery"></div>
                 <div class="cta-button mt-30">
                     <button class="btn-primary">${content.cta}</button>
+                </div>
+            </div>
+        `;
+    }
+
+    static renderBouquet() {
+        return `
+            <div class="day-content day-theme-rose bouquet-container">
+                <h2>🌹 Rose Day</h2>
+                <div class="bouquet-intro">
+                    <p><em>"Finally, a bouquet you don't have to leave behind."</em></p>
+                    <p class="subtext">Guaranteed never to wilt, even through airport security.</p>
+                </div>
+                
+                <div class="bouquet-garden">
+                    <div class="rose rose-red" data-rose="red">
+                        <span class="rose-emoji">🌹</span>
+                    </div>
+                    <div class="rose rose-yellow" data-rose="yellow">
+                        <span class="rose-emoji">🌼</span>
+                    </div>
+                    <div class="rose rose-pink" data-rose="pink">
+                        <span class="rose-emoji">🌸</span>
+                    </div>
+                    <div class="rose rose-white" data-rose="white">
+                        <span class="rose-emoji">🤍</span>
+                    </div>
+                    <div class="rose rose-lavender" data-rose="lavender">
+                        <span class="rose-emoji">💜</span>
+                    </div>
+                    <div class="rose rose-orange" data-rose="orange">
+                        <span class="rose-emoji">🧡</span>
+                    </div>
+                </div>
+
+                <div class="rose-display">
+                    <div id="roseTitle" class="rose-title">Pick a rose</div>
+                    <div id="roseMessage" class="rose-message">Click on any rose to see its meaning</div>
                 </div>
             </div>
         `;

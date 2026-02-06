@@ -330,17 +330,111 @@ body {
     margin: 15px 0;
 }
 
-/* ==================== UTILITY CLASSES ==================== */
-.text-center {
+/* ==================== BOUQUET STYLING ==================== */
+.bouquet-container {
+    padding: 40px 20px !important;
+}
+
+.bouquet-intro {
     text-align: center;
+    margin-bottom: 40px;
 }
 
-.mt-20 {
-    margin-top: 20px;
+.bouquet-intro p {
+    font-size: 1.3rem;
+    font-style: italic;
+    color: var(--primary-color);
+    margin-bottom: 10px;
 }
 
-.mt-30 {
+.bouquet-intro .subtext {
+    font-size: 1rem;
+    color: var(--text-light);
+    font-style: normal;
+}
+
+.bouquet-garden {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 30px;
+    margin: 40px 0;
+    padding: 30px;
+    background: rgba(255, 107, 157, 0.03);
+    border-radius: var(--border-radius);
+    justify-items: center;
+    align-items: center;
+}
+
+.rose {
+    width: 90px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+    animation: float 3s ease-in-out infinite;
+}
+
+.rose .rose-emoji {
+    font-size: 4rem;
+    transition: var(--transition);
+    display: block;
+}
+
+.rose:hover {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 10px rgba(255, 107, 157, 0.4));
+}
+
+.rose.active {
+    transform: scale(1.25);
+    filter: drop-shadow(0 0 15px rgba(255, 107, 157, 0.6));
+}
+
+.rose-red { --delay: 0s; }
+.rose-yellow { --delay: 0.1s; animation-delay: var(--delay); }
+.rose-pink { --delay: 0.2s; animation-delay: var(--delay); }
+.rose-white { --delay: 0.3s; animation-delay: var(--delay); }
+.rose-lavender { --delay: 0.4s; animation-delay: var(--delay); }
+.rose-orange { --delay: 0.5s; animation-delay: var(--delay); }
+
+.rose-orange:hover {
+    animation: shake 0.5s ease-in-out;
+}
+
+.rose-display {
+    background: var(--white);
+    border-radius: var(--border-radius);
+    padding: 30px;
     margin-top: 30px;
+    text-align: center;
+    border-left: 5px solid var(--primary-color);
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    animation: fadeIn 0.6s ease-out;
+}
+
+.rose-title {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.rose-message {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-dark);
+    margin: 0;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
 }
 
 /* ==================== RESPONSIVE DESIGN ==================== */
