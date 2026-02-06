@@ -113,6 +113,11 @@ class DayContent {
             // Use the standalone rose-day.html file
             return `<iframe src="rose-day.html" style="width: 100%; height: 85vh; border: none; border-radius: 15px;" title="Rose Day Bouquet"></iframe>`;
         }
+        
+        // Special handling for Propose Day on Day 2
+        if (dayId === 2) {
+            return `<iframe src="propose-day.html" style="width: 100%; height: 85vh; border: none; border-radius: 15px;" title="Propose Day"></iframe>`;
+        }
 
         return `
             <div class="day-content ${content.theme}">
