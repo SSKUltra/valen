@@ -37,6 +37,9 @@ class App {
             // Render content
             contentArea.innerHTML = DayContent.renderContent(dayId);
 
+            // Initialize day-specific effects
+            ContentUtils.initDayEffects(dayId);
+
             // Highlight active day in debug mode
             if (DebugMode.isEnabled()) {
                 DebugMode.updateDayButtons(dayId);
