@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Week - For Zenia ❤️</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Debug Mode Indicator (hidden by default) -->
+        <div id="debugIndicator" class="debug-indicator" style="display: none;">
+            <p>🔧 DEBUG MODE - Day Selector Enabled</p>
+            <div id="daySelector" class="day-selector"></div>
+        </div>
+
+        <!-- Main Content Container -->
+        <div id="mainContent" class="container">
+            <header class="header">
+                <h1 id="dayTitle"></h1>
+                <p id="dayDate"></p>
+            </header>
+
+            <main class="content">
+                <div id="contentArea"></div>
+            </main>
+
+            <footer class="footer">
+                <p>💕 Valentine's Week 2026 💕</p>
+            </footer>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/dateUtils.js"></script>
+    <script src="js/dayContent.js"></script>
+    <script src="js/debugMode.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
