@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 1: The Forever Bouquet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #fff5f7;
+            --text-color: #4a4a4a;
+            --accent-pink: #ff8fa3;
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            z-index: 10;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: #d63384;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            max-width: 500px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        /* BOUQUET STYLING */
+        .bouquet-frame {
+            position: relative;
+            width: 320px;
+            height: 380px;
+            margin: 20px auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        .roses-cluster {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+        }
+
+        /* Base Rose Shape */
+        .rose {
+            position: absolute;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            width: 90px;
+            height: 90px;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15));
+        }
+
+        .rose:hover {
+            transform: scale(1.15) translateY(-10px);
+            z-index: 10 !important;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2));
+        }
+
+        /* Positioning the roses in a cluster */
+        .rose-red { top: 20px; left: 110px; z-index: 5; }
+        .rose-yellow { top: 60px; left: 40px; z-index: 4; }
+        .rose-pink { top: 70px; left: 180px; z-index: 4; }
+        .rose-white { top: 120px; left: 115px; z-index: 6; }
+        .rose-lavender { top: 130px; left: 45px; z-index: 3; }
+        .rose-orange { top: 140px; left: 190px; z-index: 3; }
+
+        /* The Bouquet Wrapping/Ribbon */
+        .bouquet-wrap {
+            position: absolute;
+            bottom: 40px;
+            width: 140px;
+            height: 180px;
+            background: #f3e5f5; /* Light paper look */
+            clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+            z-index: 1;
+            opacity: 0.6;
+        }
+
+        .ribbon {
+            position: absolute;
+            bottom: 100px;
+            width: 60px;
+            height: 30px;
+            background: #d63384;
+            border-radius: 5px;
+            z-index: 7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .ribbon::after {
+            content: "♥";
+            color: white;
+            font-size: 14px;
+        }
+
+        /* Message Card */
+        .message-card {
+            background: white;
+            width: 90%;
+            max-width: 550px;
+            min-height: 180px;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            margin: 20px 0 50px 0;
+            border: 2px dashed #ffebef;
+            transition: all 0.5s ease;
+        }
+
+        .message-content h2 {
+            font-family: 'Dancing Script', cursive;
+            margin-top: 0;
+        }
+
+        #placeholder {
+            color: #bbb;
+            font-style: italic;
+            margin-top: 40px;
+        }
+
+        @keyframes wobble {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(3deg); }
+            75% { transform: rotate(-3deg); }
+        }
+
+        .rose-orange:hover {
+            animation: wobble 0.3s infinite;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>The Forever Bouquet</h1>
+        <p class="subtitle">A special bunch for my Smol Penguin. Since you can't take the real ones home, these ones live on your phone and never wilt. Click a bloom to see why I chose it. ❤️</p>
+    </header>
+
+    <div class="bouquet-frame">
+        <div class="roses-cluster">
+            <!-- SVG Rose Template: Layered circles to look like a bloom -->
+            <!-- Red Rose -->
+            <div class="rose rose-red" onclick="showMessage('red')">
+                <svg viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="40" fill="#e63946" />
+                    <circle cx="50" cy="40" r="25" fill="#f94144" stroke="#fff5" stroke-width="1" />
+                    <circle cx="40" cy="55" r="20" fill="#d90429" stroke="#fff3" stroke-width="1" />
+                    <circle cx="60" cy="55" r="20" fill="#ef233c" stroke="#fff3" stroke-width="1" />
+                    <circle cx="50" cy="50" r="10" fill="#941b0c" />
+                </svg>
+            </div>
+
+            <!-- Yellow Rose -->
+            <div class="rose rose-yellow" onclick="showMessage('yellow')">
+                <svg viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="40" fill="#ffb703" />
+                    <circle cx="50" cy="40" r="25" fill="#ffd000" stroke="#fff5" stroke-width="1" />
+                    <circle cx="40" cy="55" r="20" fill="#ff9f1c" stroke="#fff3" stroke-width="1" />
+                    <circle cx="60" cy="55" r="20" fill="#ff8c00" stroke="#fff3" stroke-width="1" />
+                    <circle cx="50" cy="50" r="10" fill="#e85d04" />
+                </svg>
+            </div>
+
+            <!-- Pink Rose -->
+            <div class="rose rose-pink" onclick="showMessage('pink')">
+                <svg viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="40" fill="#ff8fa3" />
+                    <circle cx="50" cy="40" r="25" fill="#ffb3c1" stroke="#fff5" stroke-width="1" />
+                    <circle cx="40" cy="55" r="20" fill="#ff758f" stroke="#fff3" stroke-width="1" />
+                    <circle cx="60" cy="55" r="20" fill="#ff4d6d" stroke="#fff3" stroke-width="1" />
+                    <circle cx="50" cy="50" r="10" fill="#c9184a" />
+                </svg>
+            </div>
+
+            <!-- White Rose -->
+            <div class="rose rose-white" onclick="showMessage('white')">
+                <svg viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="40" fill="#f8f9fa" />
+                    <circle cx="50" cy="40" r="25" fill="#ffffff" stroke="#e9ecef" stroke-width="1" />
+                    <circle cx="40" cy="55" r="20" fill="#e9ecef" stroke="#fff" stroke-width="1" />
+                    <circle cx="60" cy="55" r="20" fill="#dee2e6" stroke="#fff" stroke-width="1" />
+                    <circle cx="50" cy="50" r="10" fill="#ced4da" />
+                </svg>
+            </div>
+
+            <!-- Lavender Rose -->
+            <div class="rose rose-lavender" onclick="showMessage('lavender')">
+                <svg viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="40" fill="#be95ff" />
+                    <circle cx="50" cy="40" r="25" fill="#e0aaff" stroke="#fff5" stroke-width="1" />
+                    <circle cx="40" cy="55" r="20" fill="#9d4edd" stroke="#fff3" stroke-width="1" />
+                    <circle cx="60" cy="55" r="20" fill="#7b2cbf" stroke="#fff3" stroke-width="1" />
+                    <circle cx="50" cy="50" r="10" fill="#5a189a" />
+                </svg>
+            </div>
+
+            <!-- Orange Rose -->
+            <div class="rose rose-orange" onclick="showMessage('orange')">
+                <svg viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="40" fill="#fb8500" />
+                    <circle cx="50" cy="40" r="25" fill="#ffb703" stroke="#fff5" stroke-width="1" />
+                    <circle cx="40" cy="55" r="20" fill="#e85d04" stroke="#fff3" stroke-width="1" />
+                    <circle cx="60" cy="55" r="20" fill="#d00000" stroke="#fff3" stroke-width="1" />
+                    <circle cx="50" cy="50" r="10" fill="#6a040f" />
+                </svg>
+            </div>
+        </div>
+        
+        <div class="bouquet-wrap"></div>
+        <div class="ribbon"></div>
+    </div>
+
+    <div class="message-card" id="card">
+        <div class="message-content" id="message-display">
+            <p id="placeholder">Select a rose from the bouquet...</p>
+        </div>
+    </div>
+
+    <footer style="padding-bottom: 30px; opacity: 0.6; font-size: 0.8rem;">
+        Day 1: Rose Day • Made with love for Zenia
+    </footer>
+
+    <!-- ==================== MINIGAME SECTION ==================== -->
+    <div class="divider">
+        <span>👇 Surprise Below 👇</span>
+    </div>
+
+    <section id="minigame-section">
+        <h2 style="font-family: 'Dancing Script', cursive; color: #d63384; font-size: 2.5rem; margin-bottom: 10px;">Decorate the Pinky Gudiya</h2>
+        <p style="text-align: center; color: #666; margin-bottom: 30px;">Drag the roses onto the head to see my reaction!</p>
+
+        <div class="game-container">
+            <!-- The Character (Giant) -->
+            <div class="character-area">
+                <div class="speech-bubble" id="speech-bubble">Hi Smol Penguin! ❤️</div>
+                <div class="head-zone" id="head-zone">
+                    <img id="face-img" src="images/giant_idle.png" alt="Face" onerror="this.src='https://placehold.co/200x200?text=Upload+Photo'">
+                    <!-- Dropped roses will appear here -->
+                </div>
+                <div class="body-shape"></div>
+            </div>
+
+            <!-- The Roses Palette -->
+            <div class="roses-palette" id="roses-palette">
+                <div class="draggable-rose" draggable="true" data-color="red" data-face="images/giant_zen.png" data-msg="You make me so relaxed...">
+                    <svg viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="40" fill="#e63946" />
+                        <circle cx="50" cy="40" r="25" fill="#f94144" stroke="#fff5" stroke-width="1" />
+                        <circle cx="40" cy="55" r="20" fill="#d90429" stroke="#fff3" stroke-width="1" />
+                        <circle cx="60" cy="55" r="20" fill="#ef233c" stroke="#fff3" stroke-width="1" />
+                        <circle cx="50" cy="50" r="10" fill="#941b0c" />
+                    </svg>
+                </div>
+                <div class="draggable-rose" draggable="true" data-color="yellow" data-face="images/giant_goofy.png" data-msg="Smol Penguin's favorite doll!">
+                    <svg viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="40" fill="#ffb703" />
+                        <circle cx="50" cy="40" r="25" fill="#ffd000" stroke="#fff5" stroke-width="1" />
+                        <circle cx="40" cy="55" r="20" fill="#ff9f1c" stroke="#fff3" stroke-width="1" />
+                        <circle cx="60" cy="55" r="20" fill="#ff8c00" stroke="#fff3" stroke-width="1" />
+                        <circle cx="50" cy="50" r="10" fill="#e85d04" />
+                    </svg>
+                </div>
+                <div class="draggable-rose" draggable="true" data-color="pink" data-face="images/giant_blush.png" data-msg="Thank you for supporting me...">
+                    <svg viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="40" fill="#ff8fa3" />
+                        <circle cx="50" cy="40" r="25" fill="#ffb3c1" stroke="#fff5" stroke-width="1" />
+                        <circle cx="40" cy="55" r="20" fill="#ff758f" stroke="#fff3" stroke-width="1" />
+                        <circle cx="60" cy="55" r="20" fill="#ff4d6d" stroke="#fff3" stroke-width="1" />
+                        <circle cx="50" cy="50" r="10" fill="#c9184a" />
+                    </svg>
+                </div>
+                <div class="draggable-rose" draggable="true" data-color="white" data-face="images/giant_dreamy.png" data-msg="Can't wait for our sunset chai...">
+                    <svg viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="40" fill="#f8f9fa" />
+                        <circle cx="50" cy="40" r="25" fill="#ffffff" stroke="#e9ecef" stroke-width="1" />
+                        <circle cx="40" cy="55" r="20" fill="#e9ecef" stroke="#fff" stroke-width="1" />
+                        <circle cx="60" cy="55" r="20" fill="#dee2e6" stroke="#fff" stroke-width="1" />
+                        <circle cx="50" cy="50" r="10" fill="#ced4da" />
+                    </svg>
+                </div>
+                <div class="draggable-rose" draggable="true" data-color="lavender" data-face="images/giant_cringe.png" data-msg="I am being so cringe right now...">
+                    <svg viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="40" fill="#be95ff" />
+                        <circle cx="50" cy="40" r="25" fill="#e0aaff" stroke="#fff5" stroke-width="1" />
+                        <circle cx="40" cy="55" r="20" fill="#9d4edd" stroke="#fff3" stroke-width="1" />
+                        <circle cx="60" cy="55" r="20" fill="#7b2cbf" stroke="#fff3" stroke-width="1" />
+                        <circle cx="50" cy="50" r="10" fill="#5a189a" />
+                    </svg>
+                </div>
+                <div class="draggable-rose" draggable="true" data-color="orange" data-face="images/giant_pout.png" data-msg="Stop irritating me! Just kidding...">
+                    <svg viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="40" fill="#fb8500" />
+                        <circle cx="50" cy="40" r="25" fill="#ffb703" stroke="#fff5" stroke-width="1" />
+                        <circle cx="40" cy="55" r="20" fill="#e85d04" stroke="#fff3" stroke-width="1" />
+                        <circle cx="60" cy="55" r="20" fill="#d00000" stroke="#fff3" stroke-width="1" />
+                        <circle cx="50" cy="50" r="10" fill="#6a040f" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <button id="photo-btn" class="photo-btn" onclick="takePhoto()">📸 Take Photo</button>
+    </section>
+
+    <!-- Finale Overlay -->
+    <div id="polaroid-overlay" class="overlay">
+        <div class="polaroid-container" onclick="flipCard(this)">
+            <div class="polaroid-card">
+                <!-- Front Side -->
+                <div class="polaroid-front">
+                    <div class="polaroid-photo">
+                        <div class="final-character">
+                            <div class="final-head">
+                                <img id="final-face-img" src="" alt="Final Masterpiece">
+                                <!-- Final roses will be cloned here via JS -->
+                                <div id="final-roses-container"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="polaroid-caption">Forever your Pinky Gudiya.<br>Happy Rose Day.</div>
+                    <div class="flip-hint">↺ Tap to flip</div>
+                </div>
+                <!-- Back Side -->
+                <div class="polaroid-back">
+                    <h3>My Dearest Zenia,</h3>
+                    <p>Just like this silly game, I want to fill your life with as many smiles, cringy moments, and peaceful silences as possible.</p>
+                    <p>You are my Red rose (my calm), my Yellow rose (my fun), and my White rose (my future).</p>
+                    <p>I love you, my Smol Penguin. 🐧❤️</p>
+                    <p class="signature">- Your Giant</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* Minigame Styles */
+        .divider {
+            text-align: center;
+            margin: 50px 0;
+            opacity: 0.7;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
+
+        #minigame-section {
+            padding: 40px 20px;
+            background: #fff0f3;
+            border-top: 4px dashed #ff8fa3;
+            text-align: center;
+            min-height: 80vh;
+        }
+
+        .game-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Character */
+        .character-area {
+            position: relative;
+            width: 350px;
+            height: 620px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .head-zone {
+            width: 280px;
+            height: 500px;
+            background: #ffdbac; /* Skin tone fallback */
+            border-radius: 20px; /* Softer rect for face shape */
+            position: relative;
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden; /* Keep image inside */
+        }
+
+        #face-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        .body-shape {
+            width: 300px;
+            height: 120px;
+            background: #8ecae6; /* Shirt color */
+            border-radius: 60px 60px 0 0;
+            margin-top: -15px;
+            z-index: 5;
+        }
+
+        .speech-bubble {
+            background: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            position: relative;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            max-width: 250px;
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+        .speech-bubble.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 10px 10px 0;
+            border-style: solid;
+            border-color: white transparent transparent transparent;
+        }
+
+        /* Palette */
+        .roses-palette {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px;
+            background: rgba(255,255,255,0.5);
+            border-radius: 20px;
+        }
+
+        .draggable-rose {
+            width: 70px;
+            height: 70px;
+            cursor: grab;
+            transition: transform 0.2s;
+            position: relative;
+        }
+        .draggable-rose:active {
+            cursor: grabbing;
+            transform: scale(1.1);
+        }
+        .draggable-rose svg {
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Let the div handle drag */
+        }
+        .draggable-rose.hidden {
+            opacity: 0.3;
+            pointer-events: none;
+            filter: grayscale(1);
+        }
+
+        /* Dropped Rose on Head */
+        .rose-on-head {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            z-index: 20;
+            animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .rose-on-head svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0) rotate(-180deg); }
+            100% { transform: scale(1) rotate(0deg); }
+        }
+
+        /* Photo Button */
+        .photo-btn {
+            background: #d63384;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(214, 51, 132, 0.4);
+            margin-top: 30px;
+            display: none; /* Hidden until won */
+            font-family: 'Poppins', sans-serif;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Polaroid Overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 100;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            perspective: 1000px;
+        }
+
+        .polaroid-container {
+            width: 320px;
+            height: 580px;
+            cursor: pointer;
+        }
+
+        .polaroid-card {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .polaroid-container.flipped .polaroid-card {
+            transform: rotateY(180deg);
+        }
+
+        .polaroid-front, .polaroid-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: white;
+            backface-visibility: hidden;
+            border-radius: 5px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+
+        .polaroid-front {
+            padding-bottom: 50px;
+        }
+
+        .polaroid-back {
+            transform: rotateY(180deg);
+            background: #fffdf5;
+            justify-content: center;
+            text-align: center;
+            padding: 30px;
+            color: #4a4a4a;
+        }
+
+        .polaroid-photo {
+            width: 100%;
+            height: 380px;
+            background: #eee;
+            margin-bottom: 20px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #ddd;
+        }
+
+        .polaroid-caption {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+            color: #333;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        .flip-hint {
+            font-size: 0.8rem;
+            color: #999;
+            margin-top: 15px;
+        }
+
+        /* Final Character in Polaroid */
+        .final-character {
+            transform: scale(0.8);
+        }
+        .final-head {
+            width: 280px;
+            height: 500px;
+            background: #ffdbac;
+            border-radius: 20px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        #final-face-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+            margin-top: 20px;
+            color: #d63384;
+        }
+    </style>
+
+    <script>
+        // Minigame Logic
+        const draggables = document.querySelectorAll('.draggable-rose');
+        const headZone = document.getElementById('head-zone');
+        const faceImg = document.getElementById('face-img');
+        const speechBubble = document.getElementById('speech-bubble');
+        const photoBtn = document.getElementById('photo-btn');
+        let rosesPlaced = 0;
+
+        // Mobile Touch Support
+        let activeDrag = null;
+
+        draggables.forEach(rose => {
+            // Desktop Drag
+            rose.addEventListener('dragstart', (e) => {
+                e.dataTransfer.setData('text/plain', JSON.stringify({
+                    color: rose.dataset.color,
+                    face: rose.dataset.face,
+                    msg: rose.dataset.msg,
+                    svg: rose.innerHTML // Use innerHTML to capture the SVG
+                }));
+                rose.classList.add('dragging');
+            });
+
+            rose.addEventListener('dragend', () => {
+                rose.classList.remove('dragging');
+            });
+
+            // Mobile Touch
+            rose.addEventListener('touchstart', (e) => {
+                activeDrag = rose;
+                rose.style.opacity = '0.5';
+            });
+
+            rose.addEventListener('touchend', (e) => {
+                if(activeDrag) {
+                    activeDrag.style.opacity = '1';
+                    // Check drop
+                    const touch = e.changedTouches[0];
+                    const dropTarget = document.elementFromPoint(touch.clientX, touch.clientY);
+                    
+                    if(headZone.contains(dropTarget) || dropTarget === headZone) {
+                        handleDrop({
+                            color: activeDrag.dataset.color,
+                            face: activeDrag.dataset.face,
+                            msg: activeDrag.dataset.msg,
+                            svg: activeDrag.innerHTML // Use innerHTML for SVG
+                        }, activeDrag, touch.clientX, touch.clientY);
+                    }
+                    activeDrag = null;
+                }
+            });
+        });
+
+        headZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+        });
+
+        headZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            const data = JSON.parse(e.dataTransfer.getData('text/plain'));
+            const originalRose = document.querySelector(`.draggable-rose[data-color="${data.color}"]`);
+            handleDrop(data, originalRose, e.clientX, e.clientY);
+        });
+
+        function handleDrop(data, originalElement, clientX, clientY) {
+            if(originalElement.classList.contains('hidden')) return; // Already placed
+
+            // 1. Add rose to head
+            const roseDiv = document.createElement('div');
+            roseDiv.className = 'rose-on-head';
+            roseDiv.innerHTML = data.svg; // Insert SVG directly
+            
+            // Calculate Position Relative to Head Zone
+            const rect = headZone.getBoundingClientRect();
+            // Default center if coords missing (fallback)
+            let posX = rect.width / 2;
+            let posY = rect.height / 2;
+
+            if (clientX !== undefined && clientY !== undefined) {
+                posX = clientX - rect.left;
+                posY = clientY - rect.top;
+            }
+
+            const randomRot = Math.random() * 60 - 30;
+            
+            // Center the rose on the cursor (assuming 60px width/height from CSS)
+            roseDiv.style.left = `${posX - 30}px`; 
+            roseDiv.style.top = `${posY - 30}px`;
+            roseDiv.style.transform = `rotate(${randomRot}deg)`;
+
+            headZone.appendChild(roseDiv);
+
+            // 2. Hide from palette
+            originalElement.classList.add('hidden');
+
+            // 3. Update Face (Image) & Message
+            faceImg.src = data.face;
+            speechBubble.textContent = data.msg;
+            speechBubble.classList.remove('show');
+            void speechBubble.offsetWidth; // Trigger reflow
+            speechBubble.classList.add('show');
+
+            // 4. Wobble head
+            headZone.style.transform = `rotate(${Math.random() * 10 - 5}deg) scale(1.05)`;
+            setTimeout(() => headZone.style.transform = 'rotate(0) scale(1)', 300);
+
+            // 5. Check Win
+            rosesPlaced++;
+            if(rosesPlaced === 6) {
+                setTimeout(() => {
+                    photoBtn.style.display = 'block';
+                    speechBubble.textContent = "I'm beautiful! Take a picture! 📸";
+                    // Final face remains as the last set face
+                }, 1000);
+            }
+        }
+
+        function takePhoto() {
+            const overlay = document.getElementById('polaroid-overlay');
+            const flash = document.createElement('div');
+            
+            // Flash Effect
+            flash.style.position = 'fixed';
+            flash.style.top = '0';
+            flash.style.left = '0';
+            flash.style.width = '100%';
+            flash.style.height = '100%';
+            flash.style.backgroundColor = 'white';
+            flash.style.zIndex = '200';
+            flash.style.transition = 'opacity 0.5s';
+            document.body.appendChild(flash);
+
+            setTimeout(() => {
+                flash.style.opacity = '0';
+                setTimeout(() => flash.remove(), 500);
+                
+                // Show Overlay
+                overlay.style.display = 'flex';
+                
+                // Set final image in polaroid
+                document.getElementById('final-face-img').src = faceImg.src;
+
+                // Clone roses to final photo
+                const finalContainer = document.getElementById('final-roses-container');
+                finalContainer.innerHTML = ''; // Clear previous
+                document.querySelectorAll('.rose-on-head').forEach(r => {
+                    finalContainer.appendChild(r.cloneNode(true));
+                });
+            }, 200);
+        }
+
+        function flipCard(container) {
+            container.classList.toggle('flipped');
+        }
+    </script>
+    <script>
+        const data = {
+            red: { t: "The Soul Soother", c: "#e63946", b: "To the woman who is my peace. You are a calm soul who makes the world quiet down whenever we talk. Thank you for blending into my life so naturally." },
+            yellow: { t: "Smol Penguin & Her Giant", c: "#fb8500", b: "For my favorite 'Smol Penguin' from your 'Giant.' I promise to always be the person you can put flowers on and call a 'Pinky Gudiya.' Your laugh is my favorite sound." },
+            pink: { t: "The Emotional Anchor", c: "#ff4d6d", b: "You are a powerful woman who sees all my flaws and breakdowns and chooses to be my support anyway. Thank you for being my strength." },
+            white: { t: "The Golden Hour Promise", c: "#999", b: "I can’t wait for the day I’m not sending digital flowers, but waiting for you with hot chai and snacks to watch the sunset. Your forever hangout buddy." },
+            lavender: { t: "The Cringe Tribute", c: "#7b2cbf", b: "Since this is your favorite color, it's now mine too. (Did you cringe? Good.) I’ll gladly be the cringiest guy on earth just to see you react. I love it!" },
+            orange: { t: "The 'Annoyance' Blossom", c: "#d00000", b: "For all the times I irritate you just to see your reaction. Thank you for being so understanding and forgetting my nonsense so quickly. You're the best!" }
+        };
+
+        function showMessage(color) {
+            const card = document.getElementById('card');
+            const display = document.getElementById('message-display');
+            const msg = data[color];
+
+            card.style.borderColor = msg.c;
+            card.style.transform = "translateY(-5px)";
+            
+            display.innerHTML = `
+                <h2 style="color:${msg.c}">${msg.t}</h2>
+                <p style="${color === 'lavender' ? 'font-style:italic;' : ''}">${msg.b}</p>
+            `;
+            
+            setTimeout(() => { card.style.transform = "translateY(0)"; }, 200);
+        }
+    </script>
+</body>
+</html>

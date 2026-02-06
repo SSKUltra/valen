@@ -30,9 +30,15 @@ class App {
         const dayDate = document.getElementById('dayDate');
 
         if (dayInfo) {
-            // Update header
-            dayTitle.textContent = `${dayInfo.emoji} ${dayInfo.name}`;
-            dayDate.textContent = DateUtils.formatDate(dayInfo.date);
+            // Update header - hide date for Rose Day
+            if (dayId === 1) {
+                dayTitle.textContent = `🌹 Rose Day`;
+                dayDate.style.display = 'none';
+            } else {
+                dayTitle.textContent = `${dayInfo.emoji} ${dayInfo.name}`;
+                dayDate.textContent = DateUtils.formatDate(dayInfo.date);
+                dayDate.style.display = 'block';
+            }
             
             // Render content
             contentArea.innerHTML = DayContent.renderContent(dayId);
@@ -52,12 +58,12 @@ class App {
         const dayTitle = document.getElementById('dayTitle');
         const dayDate = document.getElementById('dayDate');
 
-        dayTitle.textContent = '💕 Valentine\'s Week Coming Soon!';
+        dayTitle.textContent = '💕 Valentine\'s Week for Zenia Coming Soon!';
         dayDate.textContent = 'February 7-14, 2026';
         
         contentArea.innerHTML = `
             <div class="coming-soon text-center">
-                <h2>Coming Soon...</h2>
+                <h2>Coming Soon, Zenia...</h2>
                 <p>This website will be live from February 7th to 14th, 2026.</p>
                 <p>Check back during Valentine's week to see daily surprises!</p>
                 <div class="mt-30">

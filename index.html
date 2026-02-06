@@ -8,6 +8,13 @@
 </head>
 <body>
     <div id="app">
+        <!-- Music Player -->
+        <audio id="bgMusic" loop>
+            <source src="assets/yung_kai_-_yung_kai_-_blue_Official_Music_Video_(mp3.pm).mp3" type="audio/mpeg">
+        </audio>
+        <div id="musicControl" class="music-control muted" title="Play Music">
+        </div>
+
         <!-- Debug Mode Indicator (hidden by default) -->
         <div id="debugIndicator" class="debug-indicator" style="display: none;">
             <p>🔧 DEBUG MODE - Day Selector Enabled</p>
@@ -26,7 +33,7 @@
             </main>
 
             <footer class="footer">
-                <p>💕 Valentine's Week 2026 💕</p>
+                <p>💕 Valentine's Week 2026 • Dedicated to Zenia 💕</p>
             </footer>
         </div>
     </div>
@@ -36,6 +43,7 @@
     <script src="js/dayContent.js"></script>
     <script src="js/contentUtils.js"></script>
     <script src="js/bouquetHandler.js"></script>
+    <script src="js/musicPlayer.js"></script>
     <script src="js/debugMode.js"></script>
     <script src="js/main.js"></script>
 </body>

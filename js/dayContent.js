@@ -110,7 +110,8 @@ class DayContent {
 
         // Special handling for interactive bouquet on Day 1
         if (dayId === 1) {
-            return this.renderBouquet();
+            // Use the standalone rose-day.html file
+            return `<iframe src="rose-day.html" style="width: 100%; height: 85vh; border: none; border-radius: 15px;" title="Rose Day Bouquet"></iframe>`;
         }
 
         return `
@@ -129,37 +130,66 @@ class DayContent {
 
     static renderBouquet() {
         return `
-            <div class="day-content day-theme-rose bouquet-container">
-                <h2>🌹 Rose Day</h2>
-                <div class="bouquet-intro">
-                    <p><em>"Finally, a bouquet you don't have to leave behind."</em></p>
-                    <p class="subtext">Guaranteed never to wilt, even through airport security.</p>
-                </div>
-                
-                <div class="bouquet-garden">
-                    <div class="rose rose-red" data-rose="red">
-                        <span class="rose-emoji">🌹</span>
+            <div class="day-content day-theme-rose bouquet-container-custom">
+                <header class="rose-header">
+                    <h1 class="rose-title-main">The Forever Bouquet</h1>
+                    <p class="rose-subtitle">Since you can never take the physical ones home with you through airport security... I made you a digital bouquet that stays in your pocket forever. ❤️</p>
+                </header>
+
+                <div class="bouquet-container-grid">
+                    <!-- Red Rose -->
+                    <div class="rose-wrapper" data-color="red">
+                        <svg class="rose-svg" viewBox="0 0 100 100">
+                            <path fill="#e63946" d="M50 20 C60 0 90 0 90 30 C90 60 50 90 50 90 C50 90 10 60 10 30 C10 0 40 0 50 20" />
+                            <path fill="#d00000" d="M50 30 C55 20 75 20 75 40 C75 55 50 75 50 75 C50 75 25 55 25 40 C25 20 45 20 50 30" />
+                        </svg>
                     </div>
-                    <div class="rose rose-yellow" data-rose="yellow">
-                        <span class="rose-emoji">🌼</span>
+
+                    <!-- Yellow Rose -->
+                    <div class="rose-wrapper" data-color="yellow">
+                        <svg class="rose-svg" viewBox="0 0 100 100">
+                            <path fill="#ffb703" d="M50 20 C60 0 90 0 90 30 C90 60 50 90 50 90 C50 90 10 60 10 30 C10 0 40 0 50 20" />
+                            <path fill="#fb8500" d="M50 30 C55 20 75 20 75 40 C75 55 50 75 50 75 C50 75 25 55 25 40 C25 20 45 20 50 30" />
+                        </svg>
                     </div>
-                    <div class="rose rose-pink" data-rose="pink">
-                        <span class="rose-emoji">🌸</span>
+
+                    <!-- Pink Rose -->
+                    <div class="rose-wrapper" data-color="pink">
+                        <svg class="rose-svg" viewBox="0 0 100 100">
+                            <path fill="#ff8fa3" d="M50 20 C60 0 90 0 90 30 C90 60 50 90 50 90 C50 90 10 60 10 30 C10 0 40 0 50 20" />
+                            <path fill="#ff4d6d" d="M50 30 C55 20 75 20 75 40 C75 55 50 75 50 75 C50 75 25 55 25 40 C25 20 45 20 50 30" />
+                        </svg>
                     </div>
-                    <div class="rose rose-white" data-rose="white">
-                        <span class="rose-emoji">🤍</span>
+
+                    <!-- White Rose -->
+                    <div class="rose-wrapper" data-color="white">
+                        <svg class="rose-svg" viewBox="0 0 100 100">
+                            <path fill="#f8f9fa" d="M50 20 C60 0 90 0 90 30 C90 60 50 90 50 90 C50 90 10 60 10 30 C10 0 40 0 50 20" />
+                            <path fill="#dee2e6" d="M50 30 C55 20 75 20 75 40 C75 55 50 75 50 75 C50 75 25 55 25 40 C25 20 45 20 50 30" />
+                        </svg>
                     </div>
-                    <div class="rose rose-lavender" data-rose="lavender">
-                        <span class="rose-emoji">💜</span>
+
+                    <!-- Lavender Rose -->
+                    <div class="rose-wrapper" data-color="lavender">
+                        <svg class="rose-svg" viewBox="0 0 100 100">
+                            <path fill="#be95ff" d="M50 20 C60 0 90 0 90 30 C90 60 50 90 50 90 C50 90 10 60 10 30 C10 0 40 0 50 20" />
+                            <path fill="#9d4edd" d="M50 30 C55 20 75 20 75 40 C75 55 50 75 50 75 C50 75 25 55 25 40 C25 20 45 20 50 30" />
+                        </svg>
                     </div>
-                    <div class="rose rose-orange" data-rose="orange">
-                        <span class="rose-emoji">🧡</span>
+
+                    <!-- Orange Rose -->
+                    <div class="rose-wrapper orange" data-color="orange">
+                        <svg class="rose-svg" viewBox="0 0 100 100">
+                            <path fill="#fb8500" d="M50 20 C60 0 90 0 90 30 C90 60 50 90 50 90 C50 90 10 60 10 30 C10 0 40 0 50 20" />
+                            <path fill="#e85d04" d="M50 30 C55 20 75 20 75 40 C75 55 50 75 50 75 C50 75 25 55 25 40 C25 20 45 20 50 30" />
+                        </svg>
                     </div>
                 </div>
 
-                <div class="rose-display">
-                    <div id="roseTitle" class="rose-title">Pick a rose</div>
-                    <div id="roseMessage" class="rose-message">Click on any rose to see its meaning</div>
+                <div class="message-card" id="roseMessageCard">
+                    <div class="message-content" id="roseMessageText">
+                        <span id="placeholder-text">Pick a rose from your bouquet to read a message...</span>
+                    </div>
                 </div>
             </div>
         `;
