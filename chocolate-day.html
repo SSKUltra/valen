@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 3: The Chocolate Lab</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --chocolate-dark: #3e2723;
+            --chocolate-milk: #795548;
+            --chocolate-white: #f3e5f5;
+            --cream: #fff8e1;
+            --accent: #ff7043;
+            --bg-color: #fbe9e7;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-color);
+            color: var(--chocolate-dark);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px;
+        }
+
+        h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 2.5rem;
+            margin: 0;
+            color: var(--chocolate-dark);
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            color: #8d6e63;
+            margin-top: 5px;
+        }
+
+        /* GAME CONTAINER */
+        .lab-container {
+            background: white;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 30px;
+            padding: 30px;
+            box-shadow: 0 15px 40px rgba(62, 39, 35, 0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 400px;
+        }
+
+        .step-title {
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        /* STEP 1: BASE */
+        .base-options {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .base-btn {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 4px solid transparent;
+            cursor: pointer;
+            transition: transform 0.2s, border-color 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.8rem;
+            color: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .base-btn:hover { transform: scale(1.1); }
+        .base-btn.selected { border-color: var(--accent); transform: scale(1.1); }
+
+        .dark { background: #3e2723; }
+        .milk { background: #795548; }
+        .white { background: #f5f5f5; color: #5d4037; border: 1px solid #ddd; }
+
+        /* STEP 2: MIX-INS */
+        .mixins-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .mixin-item {
+            background: #fff3e0;
+            padding: 10px;
+            border-radius: 15px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mixin-item:hover { 
+            background: #ffe0b2; 
+            transform: translateY(-3px) rotate(2deg);
+        }
+        
+        .mixin-item.selected { 
+            border-color: var(--accent); 
+            background: #ffccbc; 
+            animation: bounce 0.4s ease;
+        }
+        
+        .mixin-icon { 
+            font-size: 24px; 
+            display: block; 
+            margin-bottom: 5px; 
+            transition: transform 0.2s;
+        }
+
+        .mixin-item:hover .mixin-icon {
+            transform: scale(1.2);
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(0.9); }
+            70% { transform: scale(1.1); }
+        }
+
+        /* MIXING ANIMATION */
+        .mixing-bowl {
+            animation: shake 0.5s infinite;
+        }
+
+        @keyframes shake {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(5deg); }
+            50% { transform: rotate(0deg); }
+            75% { transform: rotate(-5deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        /* PREVIEW AREA */
+        .bowl {
+            width: 150px;
+            height: 80px;
+            background: #cfd8dc;
+            border-radius: 0 0 150px 150px;
+            margin: 30px auto;
+            position: relative;
+            overflow: hidden;
+            border: 4px solid #b0bec5;
+        }
+
+        .chocolate-liquid {
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            transition: background 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.5);
+            font-size: 2rem;
+            padding-bottom: 20px;
+        }
+
+        /* NAVIGATION */
+        .nav-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+            font-family: inherit;
+        }
+        
+        .nav-btn:disabled { background: #cfd8dc; cursor: not-allowed; }
+
+        /* RESULT */
+        .character { font-size: 60px; margin-bottom: 10px; }
+        .bubble {
+            background: #e0f7fa;
+            padding: 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .bubble::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 0 10px 10px;
+            border-style: solid;
+            border-color: #e0f7fa transparent;
+            display: block;
+            width: 0;
+        }
+
+        .whatsapp-btn {
+            display: inline-block;
+            background: #25D366;
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-top: 15px;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+        }
+
+        /* PROGRESS BAR */
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: #eee;
+            position: absolute;
+            top: 0; left: 0;
+        }
+        .progress-fill {
+            height: 100%;
+            background: var(--accent);
+            width: 33%;
+            transition: width 0.3s;
+        }
+
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div style="font-size: 0.8rem; letter-spacing: 2px; color: var(--accent); font-weight: 700;">FEB 09</div>
+        <h1>The Chocolate Lab</h1>
+        <div class="subtitle">Help Zenia craft the perfect treat!</div>
+    </header>
+
+    <div class="lab-container">
+        <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
+
+        <!-- STEP 1: BASE -->
+        <div id="step-1">
+            <span class="step-title">Step 1: Choose the Base</span>
+            <div class="base-options">
+                <div class="base-btn dark" onclick="selectBase('Dark', '#3e2723')">Dark</div>
+                <div class="base-btn milk" onclick="selectBase('Milk', '#795548')">Milk</div>
+                <div class="base-btn white" onclick="selectBase('White', '#fff9c4')">White</div>
+            </div>
+            
+            <div class="bowl">
+                <div class="chocolate-liquid" id="liquid-preview"></div>
+            </div>
+
+            <button class="nav-btn" id="btn-1" onclick="nextStep(2)" disabled>Next ➜</button>
+        </div>
+
+        <!-- STEP 2: MIX-INS -->
+        <div id="step-2" class="hidden">
+            <span class="step-title">Step 2: Add 3 Mix-ins</span>
+            <div class="mixins-grid">
+                <div class="mixin-item" onclick="toggleMixin(this, 'Hazelnuts')"><span class="mixin-icon">🌰</span><span class="mixin-name">Hazelnuts</span></div>
+                <div class="mixin-item" onclick="toggleMixin(this, 'Sea Salt')"><span class="mixin-icon">🧂</span><span class="mixin-name">Sea Salt</span></div>
+                <div class="mixin-item" onclick="toggleMixin(this, 'Chili')"><span class="mixin-icon">🌶️</span><span class="mixin-name">Chili</span></div>
+                <div class="mixin-item" onclick="toggleMixin(this, 'Berries')"><span class="mixin-icon">🍓</span><span class="mixin-name">Berries</span></div>
+                <div class="mixin-item" onclick="toggleMixin(this, 'Caramel')"><span class="mixin-icon">🍮</span><span class="mixin-name">Caramel</span></div>
+                <div class="mixin-item" onclick="toggleMixin(this, 'Mint')"><span class="mixin-icon">🌿</span><span class="mixin-name">Mint</span></div>
+                <div class="mixin-item" onclick="toggleMixin(this, 'Marshmallow')"><span class="mixin-icon">☁️</span><span class="mixin-name">Marshmallow</span></div>
+                <div class="mixin-item" onclick="toggleMixin(this, 'Orange Zest')"><span class="mixin-icon">🍊</span><span class="mixin-name">Orange Zest</span></div>
+                <div class="mixin-item" onclick="toggleMixin(this, 'Sprinkles')"><span class="mixin-icon">🌈</span><span class="mixin-name">Sprinkles</span></div>
+                <div class="mixin-item" onclick="toggleMixin(this, 'Cookie Dough')"><span class="mixin-icon">🍪</span><span class="mixin-name">Cookie Dough</span></div>
+                <div class="mixin-item" onclick="toggleMixin(this, 'Coffee')"><span class="mixin-icon">☕</span><span class="mixin-name">Coffee</span></div>
+                <div class="mixin-item" onclick="toggleMixin(this, 'Gold Flakes')"><span class="mixin-icon">✨</span><span class="mixin-name">Gold Flakes</span></div>
+            </div>
+            <p style="font-size: 0.8rem; color: #888; margin-top: 10px;">Selected: <span id="mixin-count">0</span>/3</p>
+            <button class="nav-btn" id="btn-2" onclick="nextStep(3)" disabled>Mix It! 🥣</button>
+        </div>
+
+        <!-- STEP 3: RESULT -->
+        <div id="step-3" class="hidden">
+            <div class="character">🧔</div>
+            <div class="bubble" id="giant-reaction">
+                "Tasting..."
+            </div>
+            
+            <div style="background: #fff3e0; padding: 15px; border-radius: 15px; margin-top: 20px;">
+                <h3 style="margin: 0 0 10px 0; font-family: 'Pacifico'; color: var(--chocolate-dark);">Zenia's Special</h3>
+                <p id="recipe-summary" style="font-size: 0.9rem;">Dark Chocolate with Chili...</p>
+            </div>
+
+            <a href="#" id="wa-link" class="whatsapp-btn" target="_blank">Send Recipe to Sarvesh 📱</a>
+        </div>
+
+    </div>
+
+    <script>
+        let state = {
+            base: null,
+            baseColor: null,
+            mixins: []
+        };
+
+        function selectBase(type, color) {
+            state.base = type;
+            state.baseColor = color;
+            
+            // UI Update
+            document.querySelectorAll('.base-btn').forEach(b => b.classList.remove('selected'));
+            event.target.classList.add('selected');
+            
+            const liquid = document.getElementById('liquid-preview');
+            liquid.style.background = color;
+            liquid.innerHTML = "🍫";
+
+            document.getElementById('btn-1').disabled = false;
+        }
+
+        function toggleMixin(el, name) {
+            if (state.mixins.includes(name)) {
+                state.mixins = state.mixins.filter(i => i !== name);
+                el.classList.remove('selected');
+            } else {
+                if (state.mixins.length >= 3) return; // Max 3
+                state.mixins.push(name);
+                el.classList.add('selected');
+            }
+            
+            document.getElementById('mixin-count').innerText = state.mixins.length;
+            document.getElementById('btn-2').disabled = state.mixins.length === 0;
+        }
+
+        function nextStep(step) {
+            if (step === 3) {
+                // Playful mixing phase
+                const btn = document.getElementById('btn-2');
+                const originalText = btn.innerText;
+                btn.innerText = "Mixing... 🌪️";
+                btn.disabled = true;
+                document.querySelector('.lab-container').classList.add('mixing-bowl');
+
+                setTimeout(() => {
+                    document.querySelector('.lab-container').classList.remove('mixing-bowl');
+                    proceedToStep(step);
+                }, 1500); // 1.5s delay for effect
+            } else {
+                proceedToStep(step);
+            }
+        }
+
+        function proceedToStep(step) {
+            document.getElementById('step-1').classList.add('hidden');
+            document.getElementById('step-2').classList.add('hidden');
+            document.getElementById('step-3').classList.add('hidden');
+            
+            document.getElementById('step-' + step).classList.remove('hidden');
+            
+            const progress = (step / 3) * 100;
+            document.getElementById('progress').style.width = progress + '%';
+
+            if (step === 3) generateResult();
+        }
+
+        function generateResult() {
+            // Reaction Logic
+            let reaction = "";
+            const m = state.mixins;
+            const b = state.base;
+
+            if (m.includes('Chili')) {
+                reaction = "Wait... is that SPICY? 🥵 You trying to burn me, Smol Penguin? (I kinda like it though...)";
+            } else if (m.includes('Gold Flakes')) {
+                reaction = "Gold flakes?! Whoa, look at you treating me like a king! 👑✨";
+            } else if (m.includes('Coffee') && b === 'Dark') {
+                reaction = "Dark chocolate AND coffee? You want me awake for 3 days straight? Let's go! ☕⚡";
+            } else if (m.includes('Cookie Dough')) {
+                reaction = "Cookie dough inside chocolate? That's inception. That's genius. 🍪";
+            } else if (m.includes('Sprinkles') && m.includes('Marshmallow')) {
+                reaction = "This looks like a unicorn exploded... and it tastes magical! 🦄🌈";
+            } else if (m.includes('Sea Salt') && m.includes('Caramel')) {
+                reaction = "Salted Caramel? Okay, you definitely have elite taste. 10/10.";
+            } else if (b === 'Dark' && m.includes('Berries')) {
+                reaction = "Dark chocolate and berries? Classy. Very fancy.";
+            } else if (b === 'White') {
+                reaction = "White chocolate? That's basically just sugar... but since you made it, I'll eat it! 🍬";
+            } else if (m.includes('Mint')) {
+                reaction = "Mint chocolate? Are we brushing our teeth or eating dessert? Just kidding! 🌿";
+            } else if (m.includes('Orange Zest') && b === 'Dark') {
+                reaction = "Dark choc and Orange? You sophisticated soul, you. 🍊";
+            } else {
+                reaction = "Ooh, this combo is interesting! I think I'm gonna need a second bar just to be sure... 😋";
+            }
+
+            document.getElementById('giant-reaction').innerText = `"${reaction}"`;
+
+            // Recipe Summary
+            const mixinString = m.join(', ');
+            document.getElementById('recipe-summary').innerText = `${b} Chocolate with ${mixinString}.`;
+
+            // WhatsApp Link
+            const phone = "919764119785";
+            const text = encodeURIComponent(`Happy Chocolate Day! 🍫\n\nI made you a custom chocolate bar:\nBase: *${b} Chocolate*\nMix-ins: *${mixinString}*\n\nReview: ${reaction}`);
+            document.getElementById('wa-link').href = `https://wa.me/${phone}?text=${text}`;
+        }
+    </script>
+</body>
+</html>
