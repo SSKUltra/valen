@@ -124,6 +124,11 @@ class DayContent {
             return `<iframe src="chocolate-day.html" style="width: 100%; height: 85vh; border: none; border-radius: 15px;" title="Chocolate Day"></iframe>`;
         }
 
+        // Special handling for Teddy Day on Day 4
+        if (dayId === 4) {
+            return `<iframe src="teddy-day.html" style="width: 100%; height: 85vh; border: none; border-radius: 15px;" title="Teddy Day"></iframe>`;
+        }
+
         return `
             <div class="day-content ${content.theme}">
                 <h2>${content.title}</h2>
