@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 2: The Ring Selection</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f8fafc;
+            --ocean: #0369a1;
+            --pink: #f43f5e;
+            --gold: #b45309;
+            --glass: rgba(255, 255, 255, 0.9);
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: #f1f5f9;
+            color: #334155;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: white;
+            width: 100%;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+        }
+
+        h1 { font-family: 'Dancing Script', cursive; color: var(--ocean); font-size: 2.5rem; margin: 0; }
+        .subtitle { font-size: 0.9rem; color: #64748b; margin-top: 10px; max-width: 400px; margin-inline: auto; }
+
+        /* CHARACTER BOX */
+        .character-chat {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: var(--ocean);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            margin: 20px 0;
+            box-shadow: 0 10px 20px rgba(3, 105, 161, 0.2);
+            max-width: 90%;
+        }
+        .avatar { font-size: 30px; }
+
+        /* GRID */
+        .ring-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            padding: 20px;
+            max-width: 600px;
+        }
+
+        .ring-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            cursor: pointer;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid transparent;
+            position: relative;
+        }
+
+        .ring-card:hover { transform: translateY(-5px); }
+        .ring-card.selected { border-color: var(--pink); }
+
+        .ring-img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            background: #eee;
+        }
+
+        .ring-info { padding: 12px; text-align: center; }
+        .ring-name { font-weight: 600; font-size: 0.85rem; color: #1e293b; }
+        .ring-style { font-size: 0.7rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* SELECTION OVERLAY */
+        #selection-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal {
+            background: white;
+            padding: 30px;
+            border-radius: 30px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            animation: pop 0.4s ease;
+        }
+
+        @keyframes pop { from { transform: scale(0.8); opacity: 0; } }
+
+        .big-ring-img { width: 100%; border-radius: 20px; margin-bottom: 20px; }
+
+        .confirm-btn {
+            background: var(--pink);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            width: 100%;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .cancel-link {
+            display: block;
+            margin-top: 15px;
+            color: #94a3b8;
+            font-size: 0.8rem;
+            text-decoration: none;
+        }
+
+        #success-msg {
+            display: none;
+            position: fixed;
+            bottom: 30px;
+            background: #059669;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            animation: slideUp 0.5s ease;
+        }
+
+        @keyframes slideUp { from { transform: translateY(100px); } }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>The Selection Suite</h1>
+        <div class="subtitle">Since Sarvesh's taste is "questionable," Zenia has been appointed as the Head of Quality Control.</div>
+    </header>
+
+    <div class="character-chat">
+        <div class="avatar">🧔</div>
+        <div id="sarvesh-msg">"Pick one you love, Smol Penguin! I'm taking notes..."</div>
+    </div>
+
+    <div class="ring-grid">
+    <!-- Style 1: Solitaire -->
+    <div class="ring-card" onclick="openRing('The Solitaire', 'Simple, elegant, and focused on one single beautiful stone. No distractions.', 'images\\solitaire.jpg')">
+        <img src="images\solitaire.jpg" class="ring-img" alt="Solitaire">
+        <div class="ring-info">
+            <div class="ring-style">Timeless</div>
+            <div class="ring-name">Classic Solitaire</div>
+        </div>
+    </div>
+
+    <!-- Style 2: Halo -->
+    <div class="ring-card" onclick="openRing('The Halo', 'A center stone surrounded by a border of smaller diamonds to maximize sparkle.', 'images\\halo.webp')">
+        <img src="images\halo.webp" class="ring-img" alt="Halo">
+        <div class="ring-info">
+            <div class="ring-style">Brilliant</div>
+            <div class="ring-name">The Halo</div>
+        </div>
+    </div>
+
+    <!-- Style 3: Three-Stone -->
+    <div class="ring-card" onclick="openRing('The Trilogy', 'Three stones representing our Past, Present, and Future together.', 'images\\trilogy.avif')">
+        <img src="images\trilogy.avif" class="ring-img" alt="Three Stone">
+        <div class="ring-info">
+            <div class="ring-style">Sentimental</div>
+            <div class="ring-name">Three-Stone</div>
+        </div>
+    </div>
+
+    <!-- Style 4: Emerald Cut -->
+    <div class="ring-card" onclick="openRing('The Emerald Cut', 'An elegant rectangular cut that shows off clarity and sophisticated lines.', 'images\\emerald.webp')">
+        <img src="images\emerald.webp" class="ring-img" alt="Emerald Cut">
+        <div class="ring-info">
+            <div class="ring-style">Sophisticated</div>
+            <div class="ring-name">Emerald Step-Cut</div>
+        </div>
+    </div>
+
+    <!-- Style 5: Toi et Moi -->
+    <div class="ring-card" onclick="openRing('Toi et Moi', 'Two stones meeting in the middle. You and Me, side by side.', 'images\\toi_et_moi.png')">
+        <img src="images\toi_et_moi.png" class="ring-img" alt="Toi et Moi">
+        <div class="ring-info">
+            <div class="ring-style">Trendy</div>
+            <div class="ring-name">Toi et Moi</div>
+        </div>
+    </div>
+
+    <!-- Style 6: Vintage -->
+    <div class="ring-card" onclick="openRing('The Vintage', 'Intricate details and romantic metalwork inspired by the Art Deco era.', 'images\\vintage.avif')">
+        <img src="images\vintage.avif" class="ring-img" alt="Vintage">
+        <div class="ring-info">
+            <div class="ring-style">Romantic</div>
+            <div class="ring-name">Vintage / Art Deco</div>
+        </div>
+    </div>
+
+    <!-- Style 7: Pear/Teardrop -->
+    <div class="ring-card" onclick="openRing('The Pear', 'A unique teardrop shape that is both modern and incredibly flattering.', 'images\\pear.jpg')">
+        <img src="images\pear.jpg" class="ring-img" alt="Pear Shape">
+        <div class="ring-info">
+            <div class="ring-style">Unique</div>
+            <div class="ring-name">Pear Shape</div>
+        </div>
+    </div>
+</div>
+
+    <!-- MODAL -->
+    <div id="selection-overlay">
+        <div class="modal">
+            <img id="modal-img" src="" class="big-ring-img">
+            <h2 id="modal-name" style="margin:0; font-family: 'Dancing Script'; color: var(--ocean);">Ring Name</h2>
+            <p id="modal-desc" style="font-size: 0.9rem; color: #64748b;">Description goes here.</p>
+            
+            <div class="custom-options" style="margin: 20px 0; text-align: left;">
+                <label style="display:block; font-size: 0.85rem; font-weight: 600; color: #64748b; margin-bottom: 5px;">Choose Metal</label>
+                <select id="metal-select" onchange="updateReaction()" style="width: 100%; padding: 12px; border-radius: 15px; border: 2px solid #e2e8f0; margin-bottom: 15px; font-family: inherit; color: #334155; outline: none;">
+                    <option value="White Gold">White Gold</option>
+                    <option value="Yellow Gold">Yellow Gold</option>
+                    <option value="Rose Gold">Rose Gold</option>
+                    <option value="Platinum">Platinum</option>
+                </select>
+
+                <label style="display:block; font-size: 0.85rem; font-weight: 600; color: #64748b; margin-bottom: 5px;">Center Stone</label>
+                <select id="stone-select" onchange="updateReaction()" style="width: 100%; padding: 12px; border-radius: 15px; border: 2px solid #e2e8f0; font-family: inherit; color: #334155; outline: none;">
+                    <option value="Diamond">Diamond 💎</option>
+                    <option value="Sapphire">Sapphire 💙</option>
+                    <option value="Ruby">Ruby ❤️</option>
+                    <option value="Emerald">Emerald 💚</option>
+                    <option value="Moissanite">Moissanite ✨</option>
+                </select>
+            </div>
+
+            <button class="confirm-btn" onclick="finalize()">I want this one! ❤️</button>
+            <a href="#" class="cancel-link" onclick="closeModal()">Back to gallery</a>
+        </div>
+    </div>
+
+    <div id="success-msg">Selection saved! The Giant is now better informed. 🐧✨</div>
+
+    <script>
+    let selectedRing = "";
+
+    function openRing(name, desc, img) {
+        selectedRing = name;
+        document.getElementById('modal-img').src = img;
+        document.getElementById('modal-name').innerText = name;
+        document.getElementById('modal-desc').innerText = desc;
+        document.getElementById('selection-overlay').style.display = 'flex';
+        
+        // Reset selectors
+        document.getElementById('metal-select').selectedIndex = 0;
+        document.getElementById('stone-select').selectedIndex = 0;
+
+        // Trigger initial reaction
+        updateReaction();
+    }
+
+    function updateReaction() {
+        const metal = document.getElementById('metal-select').value;
+        const stone = document.getElementById('stone-select').value;
+        
+        let sarveshComment = "";
+        
+        // Logic for dynamic comments based on combinations
+        if (stone === 'Diamond' && metal === 'Platinum') {
+            sarveshComment = "Platinum and Diamond? The ultimate power combo. Solid choice.";
+        } else if (metal === 'Rose Gold') {
+            sarveshComment = "Rose Gold? It matches your blush when I compliment you!";
+        } else if (stone === 'Ruby') {
+            sarveshComment = "A Ruby? Bold and passionate. Just like you when you're hungry.";
+        } else if (stone === 'Emerald') {
+            sarveshComment = "Green like nature! (Or like the envious faces of your friends? Kidding!)";
+        } else if (stone === 'Sapphire') {
+            sarveshComment = "Royal Blue! Are we inviting the Queen to the wedding?";
+        } else if (metal === 'Yellow Gold') {
+            sarveshComment = "Old school classic gold. Traditional. I like it.";
+        } else if (stone === 'Moissanite') {
+            sarveshComment = "All the sparkle, none of the cartel pricing. Smart girl!";
+        } else {
+            sarveshComment = `The ${selectedRing} in ${metal} with a ${stone}? You have such specific taste, Zenia!`;
+        }
+
+        document.getElementById('sarvesh-msg').innerText = `🧔 "${sarveshComment}"`;
+    }
+
+    function closeModal() {
+        document.getElementById('selection-overlay').style.display = 'none';
+    }
+
+    function finalize() {
+        closeModal();
+        const msg = document.getElementById('success-msg');
+        msg.style.display = 'block';
+        
+        const metal = document.getElementById('metal-select').value;
+        const stone = document.getElementById('stone-select').value;
+
+        // Note: In a real app, you'd send this to a database. 
+        // For your static site, you can just ask her what she picked or check the chat bubble!
+        document.getElementById('sarvesh-msg').innerText = `🧔 "Note taken! One ${selectedRing} in ${metal} with a ${stone}. It's going to be perfect."`;
+
+        setTimeout(() => { msg.style.display = 'none'; }, 4000);
+    }
+</script>
+</body>
+</html>
