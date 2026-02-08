@@ -1,13 +1,30 @@
 // Date utilities for Valentine's Week
 class DateUtils {
     static getCurrentDayInfo() {
-        const today = new Date();
-        const month = today.getMonth() + 1; // 1-indexed
-        const date = today.getDate();
+        const now = new Date();
+        const month = now.getMonth() + 1; // 1-indexed
+        const date = now.getDate();
+        const hour = now.getHours();
+
+        // If it's 11 PM (23:00) or later, show the next day's content
+        let effectiveDate = date;
+        let effectiveMonth = month;
+        
+        if (hour >= 23) {
+            effectiveDate = date + 1;
+            // Handle month transition if needed
+            if (effectiveDate > 28 && month === 2) {
+                const daysInFeb = new Date(now.getFullYear(), 2, 0).getDate();
+                if (effectiveDate > daysInFeb) {
+                    effectiveDate = 1;
+                    effectiveMonth = 3;
+                }
+            }
+        }
 
         // Check if within Valentine's Week
-        if (month === 2 && date >= 7 && date <= 14) {
-            return this.getDayInfoByDate(date);
+        if (effectiveMonth === 2 && effectiveDate >= 7 && effectiveDate <= 14) {
+            return this.getDayInfoByDate(effectiveDate);
         }
         
         return null; // Outside Valentine's Week
@@ -19,10 +36,26 @@ class DateUtils {
     }
 
     static isValentineWeek() {
-        const today = new Date();
-        const month = today.getMonth() + 1;
-        const date = today.getDate();
-        return month === 2 && date >= 7 && date <= 14;
+        const now = new Date();
+        const month = now.getMonth() + 1;
+        const date = now.getDate();
+        const hour = now.getHours();
+        
+        let effectiveDate = date;
+        let effectiveMonth = month;
+        
+        if (hour >= 23) {
+            effectiveDate = date + 1;
+            if (effectiveDate > 28 && month === 2) {
+                const daysInFeb = new Date(now.getFullYear(), 2, 0).getDate();
+                if (effectiveDate > daysInFeb) {
+                    effectiveDate = 1;
+                    effectiveMonth = 3;
+                }
+            }
+        }
+        
+        return effectiveMonth === 2 && effectiveDate >= 7 && effectiveDate <= 14;
     }
 
     static formatDate(day) {

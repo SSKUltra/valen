@@ -129,6 +129,11 @@ class DayContent {
             return `<iframe src="teddy-day.html" style="width: 100%; height: 85vh; border: none; border-radius: 15px;" title="Teddy Day"></iframe>`;
         }
 
+        // Special handling for Promise Day on Day 5
+        if (dayId === 5) {
+            return `<iframe src="promise-day.html" style="width: 100%; height: 85vh; border: none; border-radius: 15px;" title="Promise Day"></iframe>`;
+        }
+
         return `
             <div class="day-content ${content.theme}">
                 <h2>${content.title}</h2>
