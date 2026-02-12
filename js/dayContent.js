@@ -139,6 +139,11 @@ class DayContent {
             return `<iframe src="hug-day.html" style="width: 100%; height: 100vh; min-height: 900px; border: none; border-radius: 15px;" title="Hug Day"></iframe>`;
         }
 
+        // Special handling for Kiss Day on Day 7
+        if (dayId === 7) {
+            return `<iframe src="kiss-day.html" style="width: 100%; height: 95vh; min-height: 800px; border: none; border-radius: 15px;" title="Kiss Day"></iframe>`;
+        }
+
         return `
             <div class="day-content ${content.theme}">
                 <h2>${content.title}</h2>
