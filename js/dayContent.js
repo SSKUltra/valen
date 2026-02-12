@@ -134,6 +134,11 @@ class DayContent {
             return `<iframe src="promise-day.html" style="width: 100%; height: 85vh; border: none; border-radius: 15px;" title="Promise Day"></iframe>`;
         }
 
+        // Special handling for Hug Day on Day 6
+        if (dayId === 6) {
+            return `<iframe src="hug-day.html" style="width: 100%; height: 100vh; min-height: 900px; border: none; border-radius: 15px;" title="Hug Day"></iframe>`;
+        }
+
         return `
             <div class="day-content ${content.theme}">
                 <h2>${content.title}</h2>
