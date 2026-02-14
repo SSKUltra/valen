@@ -450,7 +450,7 @@
             <!-- Memory 1 -->
             <div class="memory-card" style="animation-delay: 0s;">
                 <div class="memory-image">
-                    <img src="images/memory-01.jpg" alt="First Meeting" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-01.jpg" alt="First Meeting" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">First meeting</div>
             </div>
@@ -458,7 +458,7 @@
             <!-- Memory 2 -->
             <div class="memory-card" style="animation-delay: 0.1s;">
                 <div class="memory-image">
-                    <img src="images/memory-02.jpg" alt="First Mirror Selfie" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-02.jpg" alt="First Mirror Selfie" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">First mirror selfie</div>
             </div>
@@ -466,7 +466,7 @@
             <!-- Memory 3 -->
             <div class="memory-card" style="animation-delay: 0.2s;">
                 <div class="memory-image">
-                    <img src="images/memory-03.jpg" alt="First Chai Together" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-03.jpg" alt="First Chai Together" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">First chai together</div>
             </div>
@@ -474,28 +474,28 @@
             <!-- Memory 4-7: Video Calls -->
             <div class="memory-card" style="animation-delay: 0.3s;">
                 <div class="memory-image">
-                    <img src="images/memory-04.jpg" alt="Video Call 1" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-04.jpg" alt="Video Call 1" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">Video calls - Part 1</div>
             </div>
 
             <div class="memory-card" style="animation-delay: 0.4s;">
                 <div class="memory-image">
-                    <img src="images/memory-05.jpg" alt="Video Call 2" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-05.jpg" alt="Video Call 2" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">Video calls - Part 2</div>
             </div>
 
             <div class="memory-card" style="animation-delay: 0.5s;">
                 <div class="memory-image">
-                    <img src="images/memory-06.jpg" alt="Video Call 3" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-06.jpg" alt="Video Call 3" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">Video calls - Part 3</div>
             </div>
 
             <div class="memory-card" style="animation-delay: 0.6s;">
                 <div class="memory-image">
-                    <img src="images/memory-07.jpg" alt="Video Call 4" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-07.jpg" alt="Video Call 4" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">Video calls - Part 4</div>
             </div>
@@ -503,7 +503,7 @@
             <!-- Memory 8 -->
             <div class="memory-card" style="animation-delay: 0.7s;">
                 <div class="memory-image">
-                    <img src="images/memory-08.jpg" alt="First T-shirt Stolen" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-08.jpg" alt="First T-shirt Stolen" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">First t-shirt stolen</div>
             </div>
@@ -511,7 +511,7 @@
             <!-- Memory 9 -->
             <div class="memory-card" style="animation-delay: 0.8s;">
                 <div class="memory-image">
-                    <img src="images/memory-09.jpg" alt="Cutie Took Me on a Date" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-09.jpg" alt="Cutie Took Me on a Date" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">Cutie took me on a date</div>
             </div>
@@ -519,7 +519,7 @@
             <!-- Memory 10 -->
             <div class="memory-card" style="animation-delay: 0.9s;">
                 <div class="memory-image">
-                    <img src="images/memory-10.jpg" alt="1st Photoshoot" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-10.jpg" alt="1st Photoshoot" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">1st photoshoot</div>
             </div>
@@ -527,7 +527,7 @@
             <!-- Memory 11 -->
             <div class="memory-card" style="animation-delay: 1s;">
                 <div class="memory-image">
-                    <img src="images/memory-11.jpg" alt="Scary Video Calls" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-11.jpg" alt="Scary Video Calls" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">Scary video calls</div>
             </div>
@@ -535,7 +535,7 @@
             <!-- Memory 12 -->
             <div class="memory-card" style="animation-delay: 1.1s;">
                 <div class="memory-image">
-                    <img src="images/memory-12.jpg" alt="1st Gaming Session" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-12.jpg" alt="1st Gaming Session" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">1st gaming session (I'm impressed)</div>
             </div>
@@ -543,7 +543,7 @@
             <!-- Memory 13 -->
             <div class="memory-card" style="animation-delay: 1.2s;">
                 <div class="memory-image">
-                    <img src="images/memory-13.jpg" alt="Jazzy Date" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-13.jpg" alt="Jazzy Date" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">Jazzy date</div>
             </div>
@@ -551,7 +551,7 @@
             <!-- Memory 14 -->
             <div class="memory-card" style="animation-delay: 1.3s;">
                 <div class="memory-image">
-                    <img src="images/memory-14.jpg" alt="Blurry Pub Night" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-14.jpg" alt="Blurry Pub Night" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">Blurry pub night</div>
             </div>
@@ -559,7 +559,7 @@
             <!-- Memory 15 -->
             <div class="memory-card" style="animation-delay: 1.4s;">
                 <div class="memory-image">
-                    <img src="images/memory-15.jpg" alt="Hats Look Amazing" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-15.jpg" alt="Hats Look Amazing" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">The day I realized hats look amazing on you</div>
             </div>
@@ -567,7 +567,7 @@
             <!-- Memory 16 -->
             <div class="memory-card" style="animation-delay: 1.5s;">
                 <div class="memory-image">
-                    <img src="images/memory-16.jpg" alt="Super Romantic Date Night" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-16.jpg" alt="Super Romantic Date Night" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">Super romantic date night</div>
             </div>
@@ -576,7 +576,7 @@
             <div class="memory-card" style="animation-delay: 1.6s;">
                 <div class="memory-image">
                     ⛰️
-                    <img src="images/memory-17.jpg" alt="First Trip in the Mountains" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-17.jpg" alt="First Trip in the Mountains" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">First trip in the mountains</div>
             </div>
@@ -584,7 +584,7 @@
             <!-- Memory 18 -->
             <div class="memory-card" style="animation-delay: 1.7s;">
                 <div class="memory-image">
-                    <img src="images/memory-18.jpg" alt="One with the Boss Lady" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-18.jpg" alt="One with the Boss Lady" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">One with the boss lady</div>
             </div>
@@ -593,7 +593,7 @@
             <div class="memory-card" style="animation-delay: 1.8s;">
                 <div class="memory-image">
                     ✈️
-                    <img src="images/memory-19.jpg" alt="Flying Together" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-19.jpg" alt="Flying Together" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">Flying together for the first time (stop sniffing me babe, haha)</div>
             </div>
@@ -602,7 +602,7 @@
             <div class="memory-card" style="animation-delay: 1.9s;">
                 <div class="memory-image">
                     🏞️
-                    <img src="images/memory-20.jpg" alt="Favorite Place" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-20.jpg" alt="Favorite Place" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">Favorite place with my favorite</div>
             </div>
@@ -611,7 +611,7 @@
             <div class="memory-card" style="animation-delay: 2s;">
                 <div class="memory-image">
                     🏖️
-                    <img src="images/memory-21.jpg" alt="Beach Baby" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-21.jpg" alt="Beach Baby" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">Beach baby</div>
             </div>
@@ -619,7 +619,7 @@
             <!-- Memory 22 -->
             <div class="memory-card" style="animation-delay: 2.1s;">
                 <div class="memory-image">
-                    <img src="images/memory-22.jpg" alt="Trying New Things" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-22.jpg" alt="Trying New Things" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">Trying new things</div>
             </div>
@@ -627,7 +627,7 @@
             <!-- Memory 23 -->
             <div class="memory-card" style="animation-delay: 2.2s;">
                 <div class="memory-image">
-                    <img src="images/memory-23.jpg" alt="Regretting" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-23.jpg" alt="Regretting" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">Regretting haha</div>
             </div>
@@ -635,7 +635,7 @@
             <!-- Memory 24 -->
             <div class="memory-card" style="animation-delay: 2.3s;">
                 <div class="memory-image">
-                    <img src="images/memory-24.jpg" alt="First Boat Ride" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-24.jpg" alt="First Boat Ride" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">First boat ride</div>
             </div>
@@ -643,7 +643,7 @@
             <!-- Memory 25 -->
             <div class="memory-card" style="animation-delay: 2.4s;">
                 <div class="memory-image">
-                    <img src="images/memory-25.jpg" alt="Jingle Jingle" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-25.jpg" alt="Jingle Jingle" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">Jingle jingle with my twinkle</div>
             </div>
@@ -651,7 +651,7 @@
             <!-- Memory 26 -->
             <div class="memory-card" style="animation-delay: 2.5s;">
                 <div class="memory-image">
-                    <img src="images/memory-26.jpg" alt="Sundar Nursery" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-26.jpg" alt="Sundar Nursery" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">Sundar nursery with sundar lady</div>
             </div>
@@ -659,7 +659,7 @@
             <!-- Memory 27 -->
             <div class="memory-card" style="animation-delay: 2.6s;">
                 <div class="memory-image">
-                    <img src="images/memory-27.jpg" alt="Winter Nights" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-27.jpg" alt="Winter Nights" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">Winter nights with pretty</div>
             </div>
@@ -667,7 +667,7 @@
             <!-- Memory 28 -->
             <div class="memory-card" style="animation-delay: 2.7s;">
                 <div class="memory-image">
-                    <img src="images/memory-28.jpg" alt="Sipping Mimosas" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-28.jpg" alt="Sipping Mimosas" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">Sipping mimosa's lookin fuming hot</div>
             </div>
@@ -675,7 +675,7 @@
             <!-- Memory 29 -->
             <div class="memory-card" style="animation-delay: 2.8s;">
                 <div class="memory-image">
-                    <img src="images/memory-29.jpg" alt="Valentine's Trip" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-29.jpg" alt="Valentine's Trip" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">The first and most amazing valentine's day trip</div>
             </div>
@@ -683,7 +683,7 @@
             <!-- Memory 30 -->
             <div class="memory-card" style="animation-delay: 2.9s;">
                 <div class="memory-image">
-                    <img src="images/memory-30.jpg" alt="Making You Laugh" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-30.jpg" alt="Making You Laugh" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">Making you laugh at stupid jokes</div>
             </div>
@@ -691,7 +691,7 @@
             <!-- Memory 31 -->
             <div class="memory-card" style="animation-delay: 3s;">
                 <div class="memory-image">
-                    <img src="images/memory-31.jpg" alt="Strength" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-31.jpg" alt="Strength" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">Being 2/3rd of me but still exceeding me in strength</div>
             </div>
@@ -700,7 +700,7 @@
             <div class="memory-card" style="animation-delay: 3.1s;">
                 <div class="memory-image">
                     ❄️
-                    <img src="images/memory-32.jpg" alt="First Snowfall" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-32.jpg" alt="First Snowfall" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">Our first snowfall together</div>
             </div>
@@ -708,7 +708,7 @@
             <!-- Memory 33 -->
             <div class="memory-card" style="animation-delay: 3.2s;">
                 <div class="memory-image">
-                    <img src="images/memory-33.jpg" alt="Celebrating Birthdays" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-33.jpg" alt="Celebrating Birthdays" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">Celebrating birthdays together</div>
             </div>
@@ -716,7 +716,7 @@
             <!-- Memory 34 -->
             <div class="memory-card" style="animation-delay: 3.3s;">
                 <div class="memory-image">
-                    <img src="images/memory-34.jpg" alt="Hot Dates" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-34.jpg" alt="Hot Dates" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">Going on more hot dates</div>
             </div>
@@ -724,7 +724,7 @@
             <!-- Memory 35 -->
             <div class="memory-card" style="animation-delay: 3.4s;">
                 <div class="memory-image">
-                    <img src="images/memory-35.jpg" alt="Cute Ones" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-35.jpg" alt="Cute Ones" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">And cute ones</div>
             </div>
@@ -732,7 +732,7 @@
             <!-- Memory 36 -->
             <div class="memory-card" style="animation-delay: 3.5s;">
                 <div class="memory-image">
-                    <img src="images/memory-36.jpg" alt="My Favorite Photo" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-36.jpg" alt="My Favorite Photo" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">Can't miss my favorite photo of you in a timeline now can I</div>
             </div>
@@ -740,7 +740,7 @@
             <!-- Memory 37 -->
             <div class="memory-card" style="animation-delay: 3.6s;">
                 <div class="memory-image">
-                    <img src="images/memory-37.jpg" alt="Overcoming Fears" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-37.jpg" alt="Overcoming Fears" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">Overcoming fears together</div>
             </div>
@@ -748,7 +748,7 @@
             <!-- Memory 38 -->
             <div class="memory-card" style="animation-delay: 3.7s;">
                 <div class="memory-image">
-                    <img src="images/memory-38.jpg" alt="Can't Stop Looking" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-38.jpg" alt="Can't Stop Looking" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">We can't stop looking now can we</div>
             </div>
@@ -756,7 +756,7 @@
             <!-- Memory 39 -->
             <div class="memory-card" style="animation-delay: 3.8s;">
                 <div class="memory-image">
-                    <img src="images/memory-39.jpg" alt="Can't Resist Hats" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-39.jpg" alt="Can't Resist Hats" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">Can't resist hats</div>
             </div>
@@ -765,7 +765,7 @@
             <div class="memory-card" style="animation-delay: 3.9s;">
                 <div class="memory-image">
                     ☀️
-                    <img src="images/memory-40.jpg" alt="Sun Shines For You" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-40.jpg" alt="Sun Shines For You" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">Feels like the sun shines just for you</div>
             </div>
@@ -773,7 +773,7 @@
             <!-- Memory 41 -->
             <div class="memory-card" style="animation-delay: 4s;">
                 <div class="memory-image">
-                    <img src="images/memory-41.jpg" alt="Road Tripzzz" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-41.jpg" alt="Road Tripzzz" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">Road tripzzz</div>
             </div>
@@ -781,7 +781,7 @@
             <!-- Memory 42 -->
             <div class="memory-card" style="animation-delay: 4.1s;">
                 <div class="memory-image">
-                    <img src="images/memory-42.jpg" alt="Cuteness Before Disaster" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-42.jpg" alt="Cuteness Before Disaster" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">Cuteness before disaster</div>
             </div>
@@ -789,7 +789,7 @@
             <!-- Memory 43 -->
             <div class="memory-card" style="animation-delay: 4.2s;">
                 <div class="memory-image">
-                    <img src="images/memory-43.jpg" alt="We Look Hot" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-43.jpg" alt="We Look Hot" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">The day confirming that we look hot coz of you</div>
             </div>
@@ -797,7 +797,7 @@
             <!-- Memory 44 -->
             <div class="memory-card" style="animation-delay: 4.3s;">
                 <div class="memory-image">
-                    <img src="images/memory-44.jpg" alt="Birth of Pinky Gudiya" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-44.jpg" alt="Birth of Pinky Gudiya" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">The birth of pinky gudiya</div>
             </div>
@@ -805,7 +805,7 @@
             <!-- Memory 45 -->
             <div class="memory-card" style="animation-delay: 4.4s;">
                 <div class="memory-image">
-                    <img src="images/memory-45.jpg" alt="Wearing Something New" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-45.jpg" alt="Wearing Something New" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">Wearing something new together</div>
             </div>
@@ -813,7 +813,7 @@
             <!-- Memory 46 -->
             <div class="memory-card" style="animation-delay: 4.5s;">
                 <div class="memory-image">
-                    <img src="images/memory-46.jpg" alt="Height Difference" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-46.jpg" alt="Height Difference" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">The real height difference</div>
             </div>
@@ -821,7 +821,7 @@
             <!-- Memory 47 -->
             <div class="memory-card" style="animation-delay: 4.6s;">
                 <div class="memory-image">
-                    <img src="images/memory-47.jpg" alt="Put Me in Your Pocket" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-47.jpg" alt="Put Me in Your Pocket" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">Put me in your pocket please</div>
             </div>
@@ -829,7 +829,7 @@
             <!-- Memory 48 -->
             <div class="memory-card" style="animation-delay: 4.7s;">
                 <div class="memory-image">
-                    <img src="images/memory-48.jpg" alt="More Confirmation" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-48.jpg" alt="More Confirmation" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">More confirmation why we look hot</div>
             </div>
@@ -837,7 +837,7 @@
             <!-- Memory 49 -->
             <div class="memory-card" style="animation-delay: 4.8s;">
                 <div class="memory-image">
-                    <img src="images/memory-49.jpg" alt="I Mean Come On" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-49.jpg" alt="I Mean Come On" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">I mean come on</div>
             </div>
@@ -845,7 +845,7 @@
             <!-- Memory 50 -->
             <div class="memory-card" style="animation-delay: 4.9s;">
                 <div class="memory-image">
-                    <img src="images/memory-50.jpg" alt="Hat on Patience Over" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-50.jpg" alt="Hat on Patience Over" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">Hat on patience over</div>
             </div>
@@ -853,7 +853,7 @@
             <!-- Memory 51 -->
             <div class="memory-card" style="animation-delay: 5s;">
                 <div class="memory-image">
-                    <img src="images/memory-51.jpg" alt="Zenia the Destroyer" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-51.jpg" alt="Zenia the Destroyer" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">Zenia the destroyer of worlds (and Sarvesh)</div>
             </div>
@@ -861,7 +861,7 @@
             <!-- Memory 52 -->
             <div class="memory-card" style="animation-delay: 5.1s;">
                 <div class="memory-image">
-                    <img src="images/memory-52.jpg" alt="Beach Deserves You" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-52.jpg" alt="Beach Deserves You" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">The beach deserves you</div>
             </div>
@@ -869,7 +869,7 @@
             <!-- Memory 53 -->
             <div class="memory-card" style="animation-delay: 5.2s;">
                 <div class="memory-image">
-                    <img src="images/memory-53.jpg" alt="Nervous Together" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-53.jpg" alt="Nervous Together" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">Nervous together (btw you owned this day)</div>
             </div>
@@ -877,7 +877,7 @@
             <!-- Memory 54 -->
             <div class="memory-card" style="animation-delay: 5.3s;">
                 <div class="memory-image">
-                    <img src="images/memory-54.jpg" alt="Hats Don't Lie" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-54.jpg" alt="Hats Don't Lie" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">Hats don't lie babe</div>
             </div>
@@ -885,7 +885,7 @@
             <!-- Memory 55 -->
             <div class="memory-card" style="animation-delay: 5.4s;">
                 <div class="memory-image">
-                    <img src="images/memory-55.jpg" alt="Chota Gunda" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-55.jpg" alt="Chota Gunda" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">Chota gunda</div>
             </div>
@@ -893,7 +893,7 @@
             <!-- Memory 56 -->
             <div class="memory-card" style="animation-delay: 5.5s;">
                 <div class="memory-image">
-                    <img src="images/memory-56.jpg" alt="See Told You" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-56.jpg" alt="See Told You" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">See told you</div>
             </div>
@@ -901,7 +901,7 @@
             <!-- Memory 57 -->
             <div class="memory-card" style="animation-delay: 5.6s;">
                 <div class="memory-image">
-                    <img src="images/memory-57.jpg" alt="Annoying You" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-57.jpg" alt="Annoying You" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">Always annoying you while you get ready</div>
             </div>
@@ -909,7 +909,7 @@
             <!-- Memory 58 -->
             <div class="memory-card" style="animation-delay: 5.7s;">
                 <div class="memory-image">
-                    <img src="images/memory-58.jpg" alt="You Make Flowers Beautiful" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-58.jpg" alt="You Make Flowers Beautiful" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">You make the flowers more beautiful</div>
             </div>
@@ -917,7 +917,7 @@
             <!-- Memory 59 -->
             <div class="memory-card" style="animation-delay: 5.8s;">
                 <div class="memory-image">
-                    <img src="images/memory-59.jpg" alt="Building Confidence" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-59.jpg" alt="Building Confidence" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">Building confidence</div>
             </div>
@@ -925,7 +925,7 @@
             <!-- Memory 60 - Final -->
             <div class="memory-card" style="animation-delay: 5.9s;">
                 <div class="memory-image">
-                    <img src="images/memory-60.jpg" alt="Partners in Crime" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/memory-60.jpg" alt="Partners in Crime" onerror="this.style.display='none'">
                 </div>
                 <div class="memory-caption">Partners in crime</div>
             </div>
