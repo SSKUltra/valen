@@ -144,6 +144,11 @@ class DayContent {
             return `<iframe src="kiss-day.html" style="width: 100%; height: 95vh; min-height: 800px; border: none; border-radius: 15px;" title="Kiss Day"></iframe>`;
         }
 
+        // Special handling for Valentine's Day on Day 8
+        if (dayId === 8) {
+            return `<iframe src="valentine-day.html" style="width: 100%; height: 95vh; min-height: 800px; border: none; border-radius: 15px;" title="Valentine's Day"></iframe>`;
+        }
+
         return `
             <div class="day-content ${content.theme}">
                 <h2>${content.title}</h2>
